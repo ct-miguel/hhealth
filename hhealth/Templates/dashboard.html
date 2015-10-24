@@ -1,0 +1,56 @@
+{% extends "base_bare.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+<div>
+	<h1>Examiners</h1>
+	<div id="candidates">
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+var cdts = $('#candidates');
+var random_c = {};
+
+var loadAllExs = function() {
+
+	$.ajax({
+		url: '/api/candidate/all',
+		data: 'json',
+		async:false,
+		success: function(r) {
+			
+			$.each(r, function(index, value){
+				random_c = value;
+				random_c['id'] = index;
+
+				var p = $('<p></p>', {html: value.firstname + ' ' + value.lastname}).append('<a href="/api/candidate/delete/'+index+'">Delete</a>');
+				p.appendTo(cdts);
+			});
+		}
+	});
+
+};
+loadAllExs();
+
+if (!jQuery.isEmptyObject(random_c)) {
+	console.log(random_c);
+	random_c.lastname = 'changed';
+	$.ajax({
+		url: '',
+		data:random_c,
+		method: 'POST',
+		async: false,
+		success: function(r) {
+			console.log(r);
+			loadAllExs();
+		}
+	});
+}
+
+</script>
+{% endblock %}
