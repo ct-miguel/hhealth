@@ -1,10 +1,10 @@
-#!/home/craftein/Desktop/djangovenv/bin/python
-# EASY-INSTALL-ENTRY-SCRIPT: 'Django==1.10.dev20151022233823','console_scripts','django-admin'
-__requires__ = 'Django==1.10.dev20151022233823'
+#!/home/craftein/Desktop/hhealth/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'Django==1.10.dev20151024204852','console_scripts','django-admin'
+__requires__ = 'Django==1.10.dev20151024204852'
 import sys
 from pkg_resources import load_entry_point
 
 if __name__ == '__main__':
     sys.exit(
-        load_entry_point('Django==1.10.dev20151022233823', 'console_scripts', 'django-admin')()
+        load_entry_point('Django==1.10.dev20151024204852', 'console_scripts', 'django-admin')()
     )
